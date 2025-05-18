@@ -186,7 +186,7 @@ if index(['sql', 'sqlcl'], get(g:, 'dbext_default_ORA_bin', '')) >= 0
 endif
 
 if !exists('g:db_adapter_bigquery_region')
-  let g:db_adapter_bigquery_region = 'region-us'
+  let g:db_adapter_bigquery_region = 'northamerica-northeast1'
 endif
 
 let s:bigquery_schemas_query = printf("
