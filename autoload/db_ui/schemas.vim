@@ -137,7 +137,7 @@ function! s:get_oracle_queries()
   let schemes_query = "
       \SELECT /*csv*/ username
       \ FROM all_users U
-      \ WHERE 1 = 1 
+      \ WHERE 1 = 1
       \ " . common_condition . "
       \ ORDER BY username"
 
@@ -186,7 +186,7 @@ if index(['sql', 'sqlcl'], get(g:, 'dbext_default_ORA_bin', '')) >= 0
 endif
 
 if !exists('g:db_adapter_bigquery_region')
-  let g:db_adapter_bigquery_region = 'northamerica-northeast1'
+  let g:db_adapter_bigquery_region = 'region-northamerica-northeast1'
 endif
 
 let s:bigquery_schemas_query = printf("
