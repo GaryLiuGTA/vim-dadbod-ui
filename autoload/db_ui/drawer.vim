@@ -626,6 +626,10 @@ function! s:drawer.populate_schemas(db) abort
     return a:db
   endif
   let scheme = db_ui#schemas#get(a:db.scheme)
+  echo "schemes_query ============ "
+  echo scheme.schemes_query
+  echo "schemes_tables_query**************"
+  echo scheme.schemes_tables_query
   let schemas = scheme.parse_results(db_ui#schemas#query(a:db, scheme, scheme.schemes_query), 1)
   let tables = scheme.parse_results(db_ui#schemas#query(a:db, scheme, scheme.schemes_tables_query), 2)
   let schemas = filter(schemas, {i, v -> !self._is_schema_ignored(v)})
