@@ -260,6 +260,8 @@ function! s:format_query(db, scheme, query) abort
   let conn = type(a:db) == v:t_string ? a:db : a:db.conn
   let callable = get(a:scheme, 'callable', 'interactive')
   let cmd = db#adapter#dispatch(conn, callable) + get(a:scheme, 'args', [])
+  echo 'cmd ===='
+  echo cmd
   if get(a:scheme, 'requires_stdin', v:false)
     return [cmd, a:query]
   endif
@@ -267,6 +269,8 @@ function! s:format_query(db, scheme, query) abort
 endfunction
 
 function! db_ui#schemas#query(db, scheme, query) abort
+  echo 'formatted query'
+  echo s:format_query(a:db, a:scheme, a:query)
   let result = call('db#systemlist', s:format_query(a:db, a:scheme, a:query))
   return map(result, {_, val -> substitute(val, "\r$", "", "")})
 endfunction
